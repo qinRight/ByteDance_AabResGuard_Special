@@ -1,0 +1,3 @@
+include ':aabguard_plugin'
+include ':app'
+rootProject.name = "TestAbbGuard"
