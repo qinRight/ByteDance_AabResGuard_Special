@@ -29,3 +29,11 @@ configurations {
 //}
 //sourceCompatibility = versions.java
 //targetCompatibility = versions.java
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: uri('../repo')) //仓库的路径，此处是项目根目录下的 repo 的文件夹
+//        pom.groupId = 'com.bytedance.android.plugin.AabResGuardPlugin'  //groupId ，自行定义，一般是包名
+//        pom.artifactId = 'AabResGuardPlugin' //artifactId ，自行定义
+//        pom.version = '0.0.3' //version 版本号
+//    }
+//}

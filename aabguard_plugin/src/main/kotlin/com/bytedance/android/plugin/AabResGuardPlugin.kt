@@ -17,10 +17,15 @@ class AabResGuardPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         checkApplicationPlugin(project)
+        println("AabResGuardPlugin start apply")
         project.extensions.create("aabResGuard", AabResGuardExtension::class.java)
+
         project.afterEvaluate {
+            println("AabResGuardPlugin start afterEvaluate")
             getVariantManager(project).variantScopes.forEach { scope ->
-                print("AabResGuardPlugin forEach: ${scope.name}")
+                if (scope != null) {
+                    println("AabResGuardPlugin forEach: ${scope.name}")
+                }
                 createAabResGuardTask(project, scope)
             }
         }
