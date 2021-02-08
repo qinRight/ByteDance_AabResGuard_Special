@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TestAbbGuard.iml" filepath="$PROJECT_DIR$/.idea/modules/TestAbbGuard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aabguard_plugin/TestAbbGuard.aabguard_plugin.iml" filepath="$PROJECT_DIR$/.idea/modules/aabguard_plugin/TestAbbGuard.aabguard_plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/TestAbbGuard.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/TestAbbGuard.app.iml" />
     </modules>
   </component>

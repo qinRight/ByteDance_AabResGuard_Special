@@ -20,6 +20,7 @@ class AabResGuardPlugin : Plugin<Project> {
         project.extensions.create("aabResGuard", AabResGuardExtension::class.java)
         project.afterEvaluate {
             getVariantManager(project).variantScopes.forEach { scope ->
+                print("AabResGuardPlugin forEach: ${scope.name}")
                 createAabResGuardTask(project, scope)
             }
         }

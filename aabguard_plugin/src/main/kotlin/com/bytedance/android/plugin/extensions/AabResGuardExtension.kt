@@ -20,7 +20,6 @@ open class AabResGuardExtension {
 
     override fun toString(): String {
         return "AabResGuardExtension\n" +
-                "\tenableObfuscate=$enableObfuscate" +
                 "\tmappingFile=$mappingFile" +
                 "\twhiteList=${if (whiteList == null) null else whiteList}\n" +
                 "\tobfuscatedBundleFileName=$obfuscatedBundleFileName\n" +
