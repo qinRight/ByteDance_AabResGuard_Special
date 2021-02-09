@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: TestAbbGuard.aabguard_plugin.aabguard_plugin">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/aabguard_plugin/build/libs/aabguard_plugin.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
