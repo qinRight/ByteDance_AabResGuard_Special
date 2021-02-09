@@ -2,6 +2,7 @@ package com.bytedance.android.plugin.internal
 
 import com.android.build.gradle.internal.VariantManager
 import com.android.build.gradle.internal.scope.VariantScope
+import com.bytedance.android.plugin.AabResGuardPlugin
 import com.bytedance.android.plugin.model.SigningConfig
 import org.gradle.api.GradleException
 import org.gradle.api.Project
@@ -38,13 +39,17 @@ private fun getSigningConfigForAGP3(project: Project, variantScope: VariantScope
 
 private fun getSigningConfigForAGP4(agpVersion: String, project: Project, variantScope: VariantScope): SigningConfig {
     val variantManager = getVariantManager(project)
+    println("${AabResGuardPlugin.AABRESGUARD_TAG} get variantManager success")
     var buildTypes = getBuildTypesForAGPBefore4008(variantManager)
     if (buildTypes == null) {
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} buildTypes is null, getBuildTypesForAGP4009")
         buildTypes = getBuildTypesForAGP4009(variantManager)
     }
     if (buildTypes == null) {
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} buildTypes is null,throw NotSupportedException")
         throw NotSupportedException("AGP $agpVersion is not supported, please Please ask for an issue or pull request.")
     }
+    println("${AabResGuardPlugin.AABRESGUARD_TAG} buildTypes is ${buildTypes.toString()}")
     val flavor = variantScope.variantData.name
     val buildTypeData = buildTypes[variantScope.variantData.name]
             ?: throw GradleException("get buildType failed for $flavor")
@@ -60,7 +65,9 @@ private fun getSigningConfigForAGP4(agpVersion: String, project: Project, varian
 private fun getBuildTypesForAGPBefore4008(variantManager: VariantManager): Map<*, *>? {
     return try {
         variantManager::class.java.getMethod("getBuildTypes").invoke(variantManager) as Map<*, *>
+
     } catch (e: Exception) {
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} get getBuildTypesForAGPBefore4008 error: ${e.message}")
         return null
     }
 }
@@ -77,6 +84,7 @@ private fun getBuildTypesForAGP4009(variantManager: VariantManager): Map<*, *>? 
         val buildTypesField = variantInputModel::class.java.getField("buildTypes")
         return buildTypesField.get(variantInputModel) as Map<*, *>?
     } catch (e: Exception) {
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} getBuildTypesForAGP4009 exception :${e.message}")
         null
     }
 }

@@ -14,17 +14,19 @@ import org.gradle.api.Task
  * Email: yangjing.yeoh@bytedance.com
  */
 class AabResGuardPlugin : Plugin<Project> {
-
+companion object{
+    public val AABRESGUARD_TAG = "bytedance_aabresguard"
+}
     override fun apply(project: Project) {
         checkApplicationPlugin(project)
-        println("AabResGuardPlugin start apply")
+        println("$AABRESGUARD_TAG AabResGuardPlugin start apply")
         project.extensions.create("aabResGuard", AabResGuardExtension::class.java)
 
         project.afterEvaluate {
-            println("AabResGuardPlugin start afterEvaluate")
+            println("$AABRESGUARD_TAG AabResGuardPlugin start afterEvaluate")
             getVariantManager(project).variantScopes.forEach { scope ->
                 if (scope != null) {
-                    println("AabResGuardPlugin forEach: ${scope.name}")
+                    println("$AABRESGUARD_TAG AabResGuardPlugin forEach: ${scope.name}")
                 }
                 createAabResGuardTask(project, scope)
             }
