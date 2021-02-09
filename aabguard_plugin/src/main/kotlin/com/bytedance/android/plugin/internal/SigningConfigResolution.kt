@@ -79,9 +79,12 @@ private fun getBuildTypesForAGPBefore4008(variantManager: VariantManager): Map<*
 private fun getBuildTypesForAGP4009(variantManager: VariantManager): Map<*, *>? {
     return try {
         val variantInputModelField = variantManager::class.java.getDeclaredField("variantInputModel")
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} getBuildTypesForAGP4009 variantInputModelField $variantInputModelField")
         variantInputModelField.isAccessible = true
         val variantInputModel = variantInputModelField.get(variantManager)
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} getBuildTypesForAGP4009 variantInputModel $variantInputModel")
         val buildTypesField = variantInputModel::class.java.getField("buildTypes")
+        println("${AabResGuardPlugin.AABRESGUARD_TAG} getBuildTypesForAGP4009 buildTypesField $buildTypesField")
         return buildTypesField.get(variantInputModel) as Map<*, *>?
     } catch (e: Exception) {
         println("${AabResGuardPlugin.AABRESGUARD_TAG} getBuildTypesForAGP4009 exception :${e.message}")
