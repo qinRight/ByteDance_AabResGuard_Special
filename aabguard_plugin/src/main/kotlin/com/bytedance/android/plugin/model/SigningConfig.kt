@@ -1,5 +1,7 @@
 package com.bytedance.android.plugin.model
 
+import com.google.common.base.MoreObjects
+import org.gradle.api.Action
 import java.io.File
 
 /**
@@ -7,7 +9,7 @@ import java.io.File
  * Email: yangjing.yeoh@bytedance.com
  */
 open class SigningConfig {
-    var storeFile: File? = null
+    var storeFile: File? = File("storeFile")
     var storePassword: String? = null
     var keyAlias: String? = null
     var keyPassword: String? = null
@@ -17,5 +19,18 @@ open class SigningConfig {
         storePassword = storeps
         keyAlias = keya
         keyPassword = keyP
+    }
+
+    fun storeFile(action: Action<File>) {
+
+        action.execute(storeFile)
+    }
+
+    override fun toString(): String
+    {
+        return "storeFile=${storeFile?.absolutePath}," +
+                "storePassword=$storePassword,"+
+                "keyAlias=$keyAlias,"+
+                "keyPassword=$keyPassword";
     }
 }
