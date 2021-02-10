@@ -22,6 +22,10 @@ open class AabResGuardExtension {
     var languageWhiteList: Set<String>? = HashSet()
     var signingConfig:SigningConfig = SigningConfig()
 
+    //创建内部Extension，名称为方法名 inner
+    fun signingConfig(action:Action<SigningConfig>) {
+        action.execute(signingConfig)
+    }
 
     override fun toString(): String {
         return "AabResGuardExtension\n" +
