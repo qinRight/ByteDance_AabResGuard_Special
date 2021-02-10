@@ -27,9 +27,9 @@ companion object{
         project.afterEvaluate {
             println("$AABRESGUARD_TAG AabResGuardPlugin start afterEvaluate")
             getVariantManager(project).variantScopes.forEach { scope ->
-                if (scope != null) {
-                    println("$AABRESGUARD_TAG AabResGuardPlugin forEach: ${scope.name}")
-                }
+//                if (scope != null) {
+//                    println("$AABRESGUARD_TAG AabResGuardPlugin forEach: ${scope.name}")
+//                }
                 createAabResGuardTask(project, scope)
             }
         }
