@@ -1,5 +1,8 @@
 package com.bytedance.android.plugin.extensions
 
+import com.bytedance.android.plugin.model.SigningConfig
+import org.gradle.api.Action
+import org.gradle.api.NamedDomainObjectContainer
 import java.nio.file.Path
 
 /**
@@ -17,6 +20,8 @@ open class AabResGuardExtension {
     var enableFilterStrings: Boolean = false
     var unusedStringPath: String? = ""
     var languageWhiteList: Set<String>? = HashSet()
+    var signingConfig:SigningConfig = SigningConfig()
+
 
     override fun toString(): String {
         return "AabResGuardExtension\n" +
@@ -28,6 +33,7 @@ open class AabResGuardExtension {
                 "\tfilterList=${if (filterList == null) null else filterList}" +
                 "\tenableFilterStrings=$enableFilterStrings\n" +
                 "\tunusedStringPath=$unusedStringPath\n" +
+                "\tsigningConfig=$signingConfig\n" +
                 "\tlanguageWhiteList=${if (languageWhiteList == null) null else languageWhiteList}"
     }
 }

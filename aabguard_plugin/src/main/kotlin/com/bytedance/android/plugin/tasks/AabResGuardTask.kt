@@ -1,8 +1,8 @@
 package com.bytedance.android.plugin.tasks
 
+import com.android.build.gradle.internal.dsl.SigningConfigFactory
 import com.android.build.gradle.internal.scope.VariantScope
 import com.bytedance.android.aabresguard.commands.ObfuscateBundleCommand
-import com.bytedance.android.plugin.AabResGuardPlugin
 import com.bytedance.android.plugin.extensions.AabResGuardExtension
 import com.bytedance.android.plugin.internal.getBundleFilePath
 import com.bytedance.android.plugin.internal.getSigningConfig
@@ -11,6 +11,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.nio.file.Path
+
 
 /**
  * Created by YangJing on 2019/10/15 .
@@ -45,8 +46,8 @@ open class AabResGuardTask : DefaultTask() {
     private fun execute() {
         println(aabResGuard.toString())
         // init signing config
-        signingConfig = getSigningConfig(project, variantScope)
-        println("${AabResGuardPlugin.AABRESGUARD_TAG} signingConfig has created")
+        signingConfig = aabResGuard.signingConfig//getSigningConfig(project, variantScope)
+
         printSignConfiguration()
 
         prepareUnusedFile()

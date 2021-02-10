@@ -3,6 +3,7 @@ package com.bytedance.android.plugin
 import com.android.build.gradle.internal.scope.VariantScope
 import com.bytedance.android.plugin.extensions.AabResGuardExtension
 import com.bytedance.android.plugin.internal.getVariantManager
+import com.bytedance.android.plugin.model.SigningConfig
 import com.bytedance.android.plugin.tasks.AabResGuardTask
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
@@ -20,6 +21,7 @@ companion object{
     override fun apply(project: Project) {
         checkApplicationPlugin(project)
         println("$AABRESGUARD_TAG AabResGuardPlugin start apply")
+        project.extensions.create("signingConfig", SigningConfig::class.java)
         project.extensions.create("aabResGuard", AabResGuardExtension::class.java)
 
         project.afterEvaluate {
