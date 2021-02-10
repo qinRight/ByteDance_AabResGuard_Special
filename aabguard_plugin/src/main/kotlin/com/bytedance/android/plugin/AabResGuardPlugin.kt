@@ -9,6 +9,7 @@ import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
+import java.io.File
 
 /**
  * Created by YangJing on 2019/10/15 .
@@ -21,7 +22,8 @@ companion object{
     override fun apply(project: Project) {
         checkApplicationPlugin(project)
         println("$AABRESGUARD_TAG AabResGuardPlugin start apply")
-        project.extensions.create("signingConfig", SigningConfig::class.java)
+//        project.extensions.create("storeFile", File::class.java)
+//        project.extensions.create("signingConfig", SigningConfig::class.java)
         project.extensions.create("aabResGuard", AabResGuardExtension::class.java)
 
         project.afterEvaluate {
